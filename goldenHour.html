@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="script.js" defer></script>
+    <title>goldenHour - Arc-Inspired Presentation</title>
+    <style>
+      body {
+        background: hsla(32, 100%, 69%, 1);
+        background: linear-gradient(150deg, hsla(32, 100%, 69%, 1) 0%, hsla(341, 43%, 49%, 1) 33%, hsla(277, 100%, 29%, 1) 67%);
+        background-size: 150% 150%;
+        animation: gradient-animation 20s ease infinite;
+        color: white;
+        text-align: center;
+        margin: 0;
+        scroll-behavior: smooth;
+        font-family: "Poppins";
+      }
+      html, body {
+        height: 100%; /* Ensure the body and html take up the full height */
+        overflow-y: scroll; /* Enable vertical scrolling */
+        scroll-behavior: smooth; /* Smooth scrolling behavior */
+      }
+      header.hero {
+        padding: 50px; /* Increase padding for the title */
+        margin-bottom: 20vh; /* Drastically increase spacing between the title and the first section */
+        text-align: center;
+      }
+      .hero, .sidekick {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 30px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: auto;
+        display: table;
+      }
+      li {
+        display: table-row;
+        padding: 10px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 2em;
+        margin: 10px;
+      }
+
+      h2 {
+        font-size: 1.5em;
+        margin: 10px;
+        transform: translateX(-10px);
+      }
+
+      h3 {
+        font-size: 1em;
+        margin: 0px;
+      }
+
+      p {
+        font-size: 1em;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2em;
+        padding: 10px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 10px;
+        transition: background 0.3s;
+      }
+      div.text-container p.paragraph {
+        text-indent: 40px;
+        text-shadow:
+          0 0 1px rgba(255, 255, 255, 0.6),
+          0 0 6px rgba(255, 255, 255, 0.5),
+          0 0 11px rgba(255, 255, 255, 0.3);
+        color: #d1d1d1;
+
+      }
+      .cards{
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh; /* Small gap between the last section and the button */
+        margin-bottom: 0; /* Remove extra space below the button */
+        padding: 0; /* Ensure no extra padding is added */
+      }
+      .slideshow-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 80%;
+        max-width: 1100px;
+        gap: 10%;
+        margin-top: 10vh; /* Reduce spacing between sections */
+        min-height: 120vh; /* Make each section taller for a more dramatic effect */
+      }
+
+      .text-container {
+        flex: 1;
+        padding: 40px; /* Add more padding inside the text container */
+        text-align: left;
+      }
+
+      .text-container h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+
+      .text-container p {
+        font-size: 1.2em;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+
+      .slideshow {
+        flex: 1;
+        position: relative;
+        max-width: 400px;
+        height: 300px;
+      }
+
+      .slide {
+        display: none;
+        width: 100%; /* Ensure the image takes up the full width of its container */
+        height: auto; /* Maintain the aspect ratio */
+        border-radius: 10px;
+        object-fit: cover; /* Ensure the image fills the container without distortion */
+      }
+
+      .active {
+        display: block;
+      }
+
+      .footer {
+        margin-top: 50px;
+      }
+      .card {
+        width: 18%;
+        height: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease-out;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform-style: preserve-3d;
+        font-family: "Poppins";
+        box-shadow:
+          0 0 6px rgba(255, 255, 255, 0.09),
+          0 0 11px rgba(255, 255, 255, 0.07);
+        position: relative;
+        transition: box-shadow 0.8s;
+        max-width: 200px;
+        min-width: 100px;
+        max-height: 200px;
+        min-height: 100px;
+      }
+      .card:hover {
+          box-shadow:
+            0 0 20px rgba(255, 255, 255, 0.6),
+            0 0 40px rgba(255, 255, 255, 0.4);
+          transform-origin: center;
+        }
+        .scroll-down {
+        position: relative;
+        bottom: 30px;
+        left: auto;
+        transform: translateX(-50%);
+        font-size: 1em;
+        color: #fff;
+        opacity: 0.8;
+        animation: fadeBounce 2s infinite;
+
+      }
+      .scroll-down-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Keep the scroll-down button fixed at the bottom */
+    bottom: 50px; /* Move the scroll-down button further up */
+    width: 100%;
+    transform: translateY(-1500%);
+  }
+      h1,
+      h2,
+      h3,
+      p {
+        text-shadow:
+          0 0 1px rgba(255, 255, 255, 0.6),
+          0 0 6px rgba(255, 255, 255, 0.5),
+          0 0 11px rgba(255, 255, 255, 0.3);
+        color: #d1d1d1;
+      }
+      @keyframes fadeBounce {
+
+        0%,
+        100% {
+        transform: translateY(0);
+        opacity: 0.8;
+        }
+
+        50% {
+        transform: translateY(10px);
+        opacity: 1;
+        }
+      }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll(".card").forEach(card => {
+            // 3D hover effect
+            card.addEventListener("mousemove", (event) => {
+              let cardRect = card.getBoundingClientRect();
+              let centerX = cardRect.left + cardRect.width / 2;
+              let centerY = cardRect.top + cardRect.height / 2;
+              let x = ((event.clientX - centerX) / cardRect.width) * 5;
+              let y = ((event.clientY - centerY) / cardRect.height) * 5;
+              card.style.transform = `perspective(600px) rotateY(${x}deg) rotateX(${-y}deg)`;
+            });
+            card.addEventListener("mouseleave", () => {
+              card.style.transform = "perspective(600px) rotateY(0deg) rotateX(0deg)";
+            });
+            // Click event to navigate to respective pages
+            card.addEventListener("click", () => {
+              let title = card.querySelector("h3").innerText;
+              let pageLinks = {
+                "Emergence": "emergence.html",
+                "Brute Force": "bruteforce.html",
+                "Golden Hour": "goldenHour.html",
+                "Dreams": "dreams.html",
+                "Special Thanks": "credits.html",
+                "About ARC": "arc.html"
+                // Add more mappings as needed
+              };
+              if (pageLinks[title]) {
+                window.location.href = pageLinks[title];
+              }
+            });
+          });
+          // Smooth scrolling when clicking on scroll-down arrow
+          document.querySelector(".scroll-down").addEventListener("click", () => {
+            const scrollDistance = window.innerHeight * 3; // Calculate the scroll distance (3x viewport height)
+            const targetPosition = window.scrollY + scrollDistance; // Add the scroll distance to the current scroll position
+
+            // Scroll to the target position smoothly
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+          });
+        });
+      </script>
+</head>
+<body>
+    <header class="hero">
+        <h1>Golden Hour</h1>
+        <h3>Unveiling Potential</h3>
+    </header>
+    <div class="scroll-down-container"><div class="scroll-down">↓ Scroll Down ↓</div></div>
+    <main class="sidekick">
+        <section class="slideshow-container" style="transform: translateY(50%)">
+            <div class="text-container">
+                <h2>Overview</h2>
+                <p class="paragraph">On my 12th birthday, the year of the tiger, I recived a very special gift from my uncle & dad. It is the "Akai MPK mini 3" midi controller. Basically a mini electric piano. It was my favorite and I used it every day for the next 3 months. 
+                I was in the front seat riding to school with my dad and I suddenly had to ask, "Why do many parents choose for their kids to play instuments?" He said, "Well, playing an insturent is scientifically supposed to help you with math. That is why many asian parents make their kids play piano or violin." On the other hand, I chose to persue music.</p>
+            </div>
+            <div class="slideshow">
+                <img class="slide active" src="YoungLiem.png" alt="Slide 1">
+                <img class="slide" src="JohnAmar.png" alt="Slide 2">
+            </div>
+        </section>
+
+        <section class="slideshow-container" style="margin-top: 10vh;">
+            <div class="text-container">
+                <h2>Inspiration</h2>
+                <p class="paragraph">The song that inspired me to persue music was Rachmaninoff's Piano Concerto no.2 movement 2. Other notable songs include Sibelius: Violin Concerto in D minor, Op. 47: I. Allegro moderato and Pavane pour une infante deftune, M. 19.</p>
+            </div>
+            <div class="slideshow">
+                <img class="slide active" src="YujaWangRachmaninoffPianoConcertono.2.jpg" alt="Slide 1">
+            </div>
+        </section>
+
+        <!-- Move the Home button closer -->
+        <div class="cards">
+            <a href="home.html" class="card">Home</a>
+        </div>
+    </main>
+</body>
+</html>
