@@ -1,8 +1,8 @@
 {
-  "name": "web-application",
-  "version": "1.0.0",
+  "name": "web-presentation",
+  "version": "3.0.0",
   "description": "A web application showcasing an arc-inspired UI presentation.",
-  "main": "src/home.html",
+  "main": "src/index.html",
   "scripts": {
     "start": "live-server src",
     "build": "echo 'Build step not defined'",
@@ -14,7 +14,7 @@
     "ui",
     "presentation"
   ],
-  "author": "Your Name",
+  "author": "Liem R. Vora",
   "license": "MIT",
   "dependencies": {
     "live-server": "^1.2.1"
